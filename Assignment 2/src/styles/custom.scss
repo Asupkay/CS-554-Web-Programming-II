@@ -1,1 +1,16 @@
+@import "variables";
 @import "../../node_modules/bootstrap/scss/bootstrap";
+
+.sidenav {
+    padding-top: $nav-padding;
+    padding-bottom: $nav-padding;
+    background-color: $nav-background-color;
+}
+
+.card {
+    margin-bottom: 10px;
+}
+
+.sidenav a {
+    color: gray;
+}
