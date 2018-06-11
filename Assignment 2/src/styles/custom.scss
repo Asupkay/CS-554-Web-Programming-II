@@ -7,10 +7,17 @@
     background-color: $nav-background-color;
 }
 
+h1 {
+    padding: $nav-padding;
+    background-color: $header-background-color; 
+    font-family: $main-font;
+}
+
 .card {
     margin-bottom: 10px;
 }
 
 .sidenav a {
     color: gray;
+    font-family: $main-font;
 }
