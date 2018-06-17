@@ -5,4 +5,4 @@ The follow up to Web Programming I which can be found in another repository. Thi
 Quiz on basic node stuff
 
 ## Assignment 2
-A comprehensive assignment on bootstrap, sass, gulp, and handlebars. 
+A comprehensive assignment on bootstrap, sass, gulp, and handlebars. Created a fake portfolio of things I invented.
