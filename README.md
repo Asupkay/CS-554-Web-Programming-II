@@ -10,5 +10,5 @@ A comprehensive assignment on Bootstrap, SASS, Gulp, and Handlebars. Created a f
 ## Assignment 3
 
 ## Assignment 4
-For this assignment, you will practice your usage of redis and async / await together. You will promisify the redis-client for use, and you will use all of its methods with the use of the await keyword.
+For this assignment, I practice the usage of redis and async / await together. We promisify the redis-client for use, and use all of its methods with the use of the await keyword.
 
