@@ -4,16 +4,20 @@ const redisConnection = require('../../redis-connection');
 const nrpSender = require('../nrp-sender-shim');
 
 router.post('/', async (req, res) => {
-  let response = await nrpSender.sendMessage({
-    redis: redisConnection,
-    eventName: 'send-message-with-reply',
-    data: {
-      action: 'POST',
-      personData: req.body
-    },
-    expectResponse: false
-  });
-  res.json({message: 'not yet implemented'});
+  try {
+    let response = await nrpSender.sendMessage({
+      redis: redisConnection,
+      eventName: 'send-message-with-reply',
+      data: {
+        action: 'POST',
+        personData: req.body
+      },
+      expectResponse: false
+    });
+    res.json(response);
+  } catch (e) {
+    res.json({ error: e.message });
+  }
 });
 
 router.get('/:id', async (req, res) => {
@@ -22,8 +26,8 @@ router.get('/:id', async (req, res) => {
       redis: redisConnection,
       eventName: 'send-message-with-reply',
       data: {
-        action: 'POST',
-        personData: req.params.id
+        action: 'GET',
+        id: req.params.id
       }
     });
     res.json(response);
@@ -32,12 +36,37 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.delete('/:id', (req, res) => {
-  res.json({message: 'not yet implemented'});
+router.delete('/:id', async (req, res) => {
+  try {
+    let response = await nrpSender.sendMessage({
+      redis: redisConnection,
+      eventName: 'send-message-with-reply',
+      data: {
+        action: 'DELETE',
+        id: req.params.id
+      } 
+    });
+    res.json(response);
+  } catch (e) {
+    res.json({ error: e.message});
+  }
 });
 
-router.put('/:id', (req, res) => {
-  res.json({message: 'not yet implemented'});
+router.put('/:id', async (req, res) => {
+  try {
+    let response = await nrpSender.sendMessage({
+      redis: redisConnection,
+      eventName: 'send-message-with-reply',
+      data: {
+        action: 'PUT',
+        id: req.params.id,
+        personData: req.body
+      }
+    });
+    res.json(response);
+  } catch (e) {
+    res.json({ error: e.message});
+  }
 })
 
 module.exports = router;

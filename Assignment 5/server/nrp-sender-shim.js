@@ -25,11 +25,9 @@ const sendMessage = (messageConfig = defaultMessageConfig) => {
     let eventName = settings.eventName;
     let outgoingEventName = `${eventName}:request:${messageId}`;
 
-    console.log("here");
     let successEventName = `${eventName}:success:${messageId}`;
     let failedEventName = `${eventName}:failed:${messageId}`;
 
-    console.log("here");
     let success = redisConnection.on(
       successEventName,
       (response, channel) => {
@@ -38,13 +36,11 @@ const sendMessage = (messageConfig = defaultMessageConfig) => {
       }
     );
     
-    console.log("here");
     let error = redisConnection.on(failedEventName, (response, channel) => {
       reject(response.data);
       endMessageLifeCycle();
     });
 
-    console.log("here");
     let shutoffEvent = [success, error];
 
     let endMessageLifeCycle = () => {
@@ -54,7 +50,6 @@ const sendMessage = (messageConfig = defaultMessageConfig) => {
       clearTimeout(killswitchTimeoutId);
     };
     
-    console.log("here");
     if(settings.timeout >= 0) {
       killswitchTimeoutId = setTimeout(() => {
         reject(new Error('timed out'));
@@ -67,10 +62,6 @@ const sendMessage = (messageConfig = defaultMessageConfig) => {
       data: settings.data,
       eventName: settings.eventName
     });
-    console.log("here");
-    if(settings.expectsResponse) {
-      fulfill();
-    }
   });
 };
 
