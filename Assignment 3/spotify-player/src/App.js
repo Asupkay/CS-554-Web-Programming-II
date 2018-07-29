@@ -1,18 +1,33 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import NavBar from './components/navBar';
+import SearchBar from './components/searchBar';
+import Songs from './components/songs';
 import './App.css';
 
 class App extends Component {
+  //const { title, artist, artistLink, photo, popularity, albumName, albumLink } = props
+  state = {
+    songs: [{
+              id: 1,
+              title: "The beat", 
+              artist: "The beats", 
+              artistLink:"www.google.com", 
+              photo:"https://images.pexels.com/photos/46710/pexels-photo-46710.jpeg?auto=compress&cs=tinysrgb&h=350", 
+              popularity: 5, 
+              albumName: "Alex", 
+              albumLink: "www.facebook.com"}]
+  }
+
+  searchSong = () => {
+    console.log("Here");
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <NavBar />
+        <SearchBar onSearch={ this.searchSong } /> 
+        <Songs songs={ this.state.songs}/>
       </div>
     );
   }
