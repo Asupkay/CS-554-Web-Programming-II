@@ -9,20 +9,21 @@ class App extends Component {
   //const { title, artist, artistLink, photo, popularity, albumName, albumLink } = props
   state = {
     songs: [],
-    search: ''
+    search: '',
+    instruction: 'Search a song!'
   }
 
   //GET https://api.spotify.com
-  //Client ID: 314d98c513da4c0aa912f8722d7a6f50
-  //Client Secret: 5a8b06b8e5b84d28a6edef4e0fb0af89
   searchSong = async () => {
-    console.log("Here");
-
     try {
-      let response = await axios.get('/tracks');
-      console.log(response);
+      let response = await axios.get(`/tracks?songName=${this.state.search}`);
+      if (response.data.tracks.items.length === 0) {
+        this.setState({
+          instruction: 'No songs found'
+        });
+      }
       await this.setState({
-        songs: response,
+        songs: response.data.tracks.items,
         search: ''
       });
     } catch (error) {
@@ -39,11 +40,13 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <React.Fragment>
         <NavBar />
-        <SearchBar onSearch={ this.searchSong } onChange= { this.handleChange }/> 
-        <Songs songs={ this.state.songs}/>
-      </div>
+        <article className="container">
+          <SearchBar onSearch={ this.searchSong } onChange= { this.handleChange } search = { this.state.search }/> 
+          <Songs songs={ this.state.songs } instruction={ this.state.instruction }/>
+        </article>
+      </React.Fragment>
     );
   }
 }
