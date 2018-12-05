@@ -11,19 +11,19 @@
   "author": "Alex Supkay",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.16.3",
+    "express": "^4.16.4",
     "express-handlebars": "^3.0.0"
   },
   "devDependencies": {
-    "bootstrap": "^4.1.1",
-    "gulp": "^3.9.1",
+    "bootstrap": "^4.1.3",
+    "gulp": "^4.0.0",
     "gulp-autoprefixer": "^5.0.0",
-    "gulp-clean-css": "^3.9.4",
+    "gulp-clean-css": "^3.10.0",
     "gulp-concat": "^2.6.1",
-    "gulp-rename": "^1.2.3",
-    "gulp-sass": "^4.0.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.4",
     "jquery": "^3.3.1",
-    "tether": "^1.4.4"
+    "tether": "^1.4.5"
   }
 }
